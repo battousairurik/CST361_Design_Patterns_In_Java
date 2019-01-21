@@ -9,7 +9,7 @@
 <jsp:include page="/includes/navBarTop.jsp" />
 </head>
 <body>
-	<form name="newAlbumForm" action="" method="post">
+	<form name="newAlbumForm" action="#{restClient.createNewAlbum()}" method="post">
 		<h1>Welcome to Masterful Music</h1><br /><br/>
 		<label for="AlbumTitleInput">ALBUM TITLE</label><br />
 		<input type="text" value="Enter the album title..." name="AlbumTitleInput"/><br/><br/>
@@ -17,5 +17,6 @@
 		<input type="text" value="Enter the album artist..." name="ArtistTitleInput" /><br/><br/>
 		<input type="submit" value="Submit" name="newAlbumBTN" />
 	</form>
+	<%-- Find out how to use an object to save the page parameters and submit them to the action method --%>
 </body>
 </html>
