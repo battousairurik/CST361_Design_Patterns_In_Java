@@ -39,7 +39,7 @@ public class SecurityFilter implements Filter {
  
         // User information stored in the Session.
         // (After successful login).
-        UserAccount loginedUser = AppUtils.getLoginedUser(request.getSession());
+        UserAccountV2 loginedUser = AppUtils.getLoginedUser(request.getSession());
  
         if (servletPath.equals("/login")) {
             chain.doFilter(request, response);
