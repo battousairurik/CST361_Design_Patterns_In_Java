@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+</head>
+<body>
+	<h:form>
+		Header:
+		<h:inputText value="#{letter.setHeader()}" />
+		<br></br>
+		Body:
+		<h:inputText value="#{letter.setBody()}" />
+		<br></br>
+		<h:commandButton action="#{formController.SendLetter()}" value="Send Letter" />
+	</h:form>
+</body>
+</html>
