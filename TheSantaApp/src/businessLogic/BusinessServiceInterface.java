@@ -34,5 +34,6 @@ public interface BusinessServiceInterface {
 
 		public int searchForLetterID(Letter letter);
 
-		public ArrayList<Letter> searchLettersByUser(String user);
+		public ArrayList<Letter> searchLettersByUsername(String username);
+		public ArrayList<Letter> searchLettersByUser(User user);
 }
