@@ -2,9 +2,11 @@ package businessLogic;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.interceptor.Interceptors;
 
 import dataAccess.LetterDAO;
+import dataAccess.LetterDBInterface;
 import interceptors.MethodExecutionInterceptor;
 import models.Letter;
 
@@ -13,9 +15,13 @@ import models.Letter;
 @Local
 public class LetterService {
 
-	LetterDAO letterDAO = new LetterDAO();
-	
-	public void addLetter (Letter letter) {
+	@Inject
+	LetterDBInterface li;
 		
+	public void addLetter (Letter letter) {
+		li.insertLetter(letter);
 	}
+	
+	
+	
 }

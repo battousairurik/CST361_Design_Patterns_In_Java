@@ -15,33 +15,8 @@ import models.User;
 
 public class LetterDAO implements LetterDBInterface{
 
+		
 	
-	
-	@Inject
-	public BusinessService bsi;
-	
-	
-	public Letter findLetter(String letterHeader) {
-		Letter searchResult = new Letter();
-		Letter searchQuery = bsi.searchForLetter(letterHeader);
-		if(searchQuery.getHeader().equals(letterHeader)) {
-			searchResult = searchQuery;
-		}
-		else {
-			searchResult = null;
-		}
-		return searchResult;
-	}
-	public ArrayList<Letter> findLetter(User user) {
-		ArrayList<Letter> searchResults = new ArrayList<>();
-		ArrayList<Letter> searchQuery = bsi.searchLettersByUser(user.getUsername());
-		for(Letter letter : searchQuery) {
-			if(letter.getUser().getUsername().equals(user.getUsername())) {
-				searchResults.add(letter);
-			}
-		} 
-		return searchResults;
-	}
 	
 
 	// Connection Variables
@@ -230,7 +205,7 @@ public class LetterDAO implements LetterDBInterface{
 	}
 
 	@Override
-	public ArrayList<Letter> searchLettersByUser(String user) {
+	public ArrayList<Letter> searchLettersByUsername(String username) {
 		ArrayList<Letter> searchResults = new ArrayList<>();
 		// Connect
 		Connection c = null;
@@ -269,7 +244,28 @@ public class LetterDAO implements LetterDBInterface{
 		return searchResults;
 	}
 	
+	public Letter findLetter(String letterHeader) {
+		Letter searchResult = new Letter();
+		Letter searchQuery = searchForLetter(letterHeader);
+		if(searchQuery.getHeader().equals(letterHeader)) {
+			searchResult = searchQuery;
+		}
+		else {
+			searchResult = null;
+		}
+		return searchResult;
+	}
 	
+	public ArrayList<Letter> findLettersByUser(User user) {
+		ArrayList<Letter> searchResults = new ArrayList<>();
+		ArrayList<Letter> searchQuery = searchLettersByUser(user.getUsername());
+		for(Letter letter : searchQuery) {
+			if(letter.getUser().getUsername().equals(user.getUsername())) {
+				searchResults.add(letter);
+			}
+		} 
+		return searchResults;
+	}
 	
 	
 }
